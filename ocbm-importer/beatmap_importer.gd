@@ -16,7 +16,7 @@ func get_resource_type():
 	return "Resource"
 
 func get_preset_count():
-	return 1
+	return 0
 
 func get_preset_name(i):
 	return "Default"

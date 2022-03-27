@@ -1,5 +1,6 @@
-####OCBM Importer v.0.9
-####OCS devtolls beatmap files (.ocbm) importer for One Cat Studio projects.
+#### OCBM Importer v.0.9
+#### One Cat Studio (C) 2022
+#### OCS devtools beatmap files (.ocbm) importer for One Cat Studio projects.
 
 tool
 extends EditorPlugin
