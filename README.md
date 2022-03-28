@@ -8,7 +8,7 @@ Introduces **OneCatBeatmap** resource class and **Note** class.
 #### Integration:
 Add the **ocbm-importer** folder to **addons** folder in your Godot project. In Project -> Project Settings -> Plugins tab, make sure that the plugin is enabled. If Godot Engine editor becomes able to see .ocbm files, the integration was successful.
 
-## Font Manager v. 0.9
+## OCS Font Manager v. 0.9
 Font Manager is a singletone for Godot that simplifies font management. Instead of creating numerous .tres files, it allows to register locales and font presets (somewhat similar to Bootstrap).
 By adding rules (called overrides) each locale, having a particular font, can be adjusted for all it's presets to cover font differences in general sizes and outline sizes.
 #### Integration and usage:
@@ -44,6 +44,38 @@ OCS Fast Lib's purpose is to simplify math, geometry and other commonly faced ro
 
 Register it as an autoload in your project and refer to it by the node name (e.g. OcsFastLib.isVectorInBounds()).
 
+
+## OCS Version Controlled Saves v.0.1
+OCS VCSaves is a singletone for savefile version control and resolving deltas between savefiles. It also repairs savefiles that belong to older game version and are structurally outdated, preventing crashes even when game savefile structure changes.
+Integration and usage:
+Register it as an autoload in your project.
+In _ready() func or outside of ocs_vcsaves.gd:
+1) Start with registering Entries for each data field (variable) that has to be tracked by VCS.
+Specify a default value for each Entry. By default, all entries will be merged by RECENT rule,
+but you can select any rule for resolving deltas. Rules behaviour works as follows:
+LOWEST: between two values, the lowest will be preferred. (5 over 6, False over True, shorter string over longer)
+HIGHEST: opposite of LOWEST
+OLDEST: will always prefer the value from older file
+RECENT: will always prefer the value from newer file
+####
+2) Once you are done registering values, you can now load game data. This singletone expects JSON
+as input. JSON will be scanned for matches with entries you have registered previously. All information
+that wasn't registered as an entry will be ignored. All entries missing in the JSON will be created from
+entries' default values. If you don't have a JSON to load yet (e.g. your game starts for the first time),
+you can initialize a savefile by putting empty string into loadGameData("")
+####
+2.1) If you are only working with local savefile, use loadGameData(json).
+####
+2.2) If you need to resolve deltas between a local savefile and a cloud one, use resolveAndLoad(json1, json2)
+####
+3) Once step 2 is done, singleton is ready to operate with savefile game data.
+Use getKeyValue(key) to get values from savefile game data.
+Use setKeyValue(key, value) to write new value to an existing key.
+3.1) Note that you cannot create a completely new entry in the database via setKeyValue(). In order to create
+a new field, you will have to registerEntry() it instead before.
+4) Use formJsonSave() to get a JSON of current gamedata state. This JSON can be saved as a savefile to device or cloud.
+
+Warning: when changing array-typed entries's defaults, make sure that your array size is not getting shorter than before, this can currently cause errors. Making arrays longer than before will work fine.
 ------------
 
-### Last updated: Feb 28, 2022
+### Last updated: Feb 29, 2022
