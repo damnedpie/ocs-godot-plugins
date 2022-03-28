@@ -76,6 +76,7 @@ a new field, you will have to registerEntry() it instead before.
 4) Use formJsonSave() to get a JSON of current gamedata state. This JSON can be saved as a savefile to device or cloud.
 
 Warning: when changing array-typed entries's defaults, make sure that your array size is not getting shorter than before, this can currently cause errors. Making arrays longer than before will work fine.
+
 ------------
 
 ### Last updated: Feb 29, 2022
