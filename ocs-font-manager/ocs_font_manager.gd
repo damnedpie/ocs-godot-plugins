@@ -1,10 +1,10 @@
-#### Font Manager v.0.9
+#### OCS Font Manager v.0.9
 #### One Cat Studio (C) 2022
 #### Font Manager is a singletone for Godot that simplifies font management.
 ###################################################################################################
-#### Instructions:
-#### Register it as an autoload in your project.
-#### In _ready() func or outside of font_manager.gd:
+#### Instructions and usage:
+#### Register it as an autoload in your project
+#### In _ready() func or outside of ocs_font_manager.gd:
 #### 1) Register locales with their respective fonts via registerLocale() function
 #### 2) Register text presets with group tags using registerPreset() function
 ####	For example, if you create a preset tagged as "UI_SMALL", all nodes
