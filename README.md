@@ -2,12 +2,6 @@
 This repo contains all of One Cat Studio's plugins and apps. All of them are functionality that is commonly used in game development.
 To make it to this repo, a plugin/app must be easy to use and integrate into any particular project.
 
-## OCBM Importer v. 0.9
-Beatmap importer for .ocbm beatmaps made via [OCS devtools](https://github.com/damnedpie/ocs-devtools "OCS devtools"). Compatible with Godot 3.4.2.
-Introduces **OneCatBeatmap** resource class and **Note** class.
-#### Integration:
-Add the **ocbm-importer** folder to **addons** folder in your Godot project. In Project -> Project Settings -> Plugins tab, make sure that the plugin is enabled. If Godot Engine editor becomes able to see .ocbm files, the integration was successful.
-
 ## OCS Font Manager v. 0.9
 Font Manager is a singletone for Godot that simplifies font management. Instead of creating numerous .tres files, it allows to register locales and font presets (somewhat similar to Bootstrap).
 By adding rules (called overrides) each locale, having a particular font, can be adjusted for all it's presets to cover font differences in general sizes and outline sizes.
