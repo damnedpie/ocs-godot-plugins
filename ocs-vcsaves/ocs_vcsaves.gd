@@ -1,4 +1,4 @@
-#### OCS Version Controlled Saves v.0.1
+#### OCS Version Controlled Saves v.0.2
 #### One Cat Studio (C) 2022
 #### OCS-VCSaves is a singletone for savefile version control and resolving deltas between savefiles.
 #### It also repairs savefiles that belong to older game version and are structurally outdated.
@@ -347,8 +347,11 @@ func _fixMissingEntries(dict:Dictionary) -> Dictionary:
 					for _i in range(dict[entry.key].size()):
 						fixedArr[_i] = dict[entry.key][_i]
 					fixedDict[entry.key] = fixedArr
+				else:
+					fixedDict[entry.key] = dict[entry.key]
 			else:
-				fixedDict[entry.key] = entry.default
+				print("%s: dict has no %s, defaulting" % [name, entry.key])
+				fixedDict[entry.key] = entry.default.duplicate(true)
 				
 		#otherwise if no key found fill it with default
 		elif !dict.has(entry.key):
