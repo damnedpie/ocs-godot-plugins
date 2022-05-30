@@ -52,14 +52,7 @@ class FMOverride:
 
 
 func _ready():
-	TranslationServer.set_locale("en_US")
-	registerLocale("en_US", load("res://fonts/PixelColeco.ttf"))
-	registerPreset("UI_SM", 36, 2, Color(0,0,0,1))
-	registerPreset("UI_MD", 48, 2, Color(0,0,0,1))
-	registerPreset("UI_LG", 72, 2, Color(0,0,0,1))
-	registerPreset("UI_XL", 96, 2, Color(0,0,0,1))
-	registerOverride("ru_RU", -4)
-	generateFonts()
+	pass
 
 
 func registerLocale(localeCode:String, localeFont:DynamicFontData) -> void:
